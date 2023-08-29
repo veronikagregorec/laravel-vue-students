@@ -27,3 +27,4 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/add-student', [StudentController::class, 'create']);
+Route::post('/save-student', [StudentController::class, 'store']);

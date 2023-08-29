@@ -28,6 +28,8 @@
                     <el-button type="success" @click="saveForm('studentForm')">Save student</el-button>
                 </el-form-item>
               </el-row>
+
+              <div v-if="this.$store.state.message">{{ this.$store.state.message }}</div>
           </el-form>
       </div>
 
@@ -38,6 +40,10 @@
 <script>
 export default {
   name: 'student-form-component',
+
+  props: {
+    scpoe:String
+  },
 
   data() {
     return {
@@ -60,7 +66,11 @@ export default {
     },
 
     saveForm(formName) {
-      
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.$store.dispatch('saveStudent', this.model)
+        }
+      })
     }
   }
 }
