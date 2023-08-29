@@ -1,0 +1,85 @@
+<template>
+  <div class="wrap">
+    <el-card class="box-card">
+      <div class="card-header">
+            <el-page-header @back="goBack" :content="`Category - ${scope}`">
+            </el-page-header>
+      </div>
+
+      <div>
+          <el-form :model="model" :rules="rules" ref="studentForm">
+              <el-column >
+                <el-form-item label="Name" required prop="name" style="margin-top: 20px;"></el-form-item>
+                <el-input v-model="model.name" placeholder="Student Name" style="margin-top: -20px;"></el-input>
+                
+                <el-form-item label="Class" required prop="class" style="margin-top: 20px;"></el-form-item>
+                <el-input v-model="model.class" placeholder="Student Class" style="margin-top: -20px;"></el-input>
+
+                <el-form-item label="Section" required prop="section" style="margin-top: 20px;"></el-form-item>
+                <el-input v-model="model.section" placeholder="Student Section" style="margin-top: -20px;"> </el-input>
+                  
+                <el-form-item label="Email" required prop="email" style="margin-top: 20px;"></el-form-item>
+                <el-input v-model="model.email" placeholder="Student Email" style="margin-top: -20px;"></el-input>
+                
+              </el-column>
+
+              <el-row :guuter="10">
+                <el-form-item style="margin-top: 20px;">
+                    <el-button type="success" @click="saveForm('studentForm')">Save student</el-button>
+                </el-form-item>
+              </el-row>
+          </el-form>
+      </div>
+
+    </el-card>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'student-form-component',
+
+  data() {
+    return {
+      model: {
+        name: "",
+        class: "",
+        section: "",
+        email: "",
+      },
+
+      rules: {
+        
+      }
+    }
+  },
+
+  methods: {
+    goBack() {
+      window.location.href="/students"
+    },
+
+    saveForm(formName) {
+      
+    }
+  }
+}
+</script>
+
+<style>
+.wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-card {
+  width: 700px;
+}
+</style>
