@@ -54,10 +54,6 @@ export default {
         class: "",
         section: "",
         email: "",
-      },
-
-      rules: {
-        
       }
     }
   },

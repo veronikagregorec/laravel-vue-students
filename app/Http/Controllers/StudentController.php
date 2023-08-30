@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    // auth routes
     // public function __construct()
     // {
     //     $this->middleware('auth');
@@ -40,9 +41,21 @@ class StudentController extends Controller
         return response()->json();
     }
 
-    public function fetchStudentData()
+    public function fetchStudentData(Request $request)
     {
-        $students = Student::all();
+        // $query = Student::all();
+        $query = Student::select('id', 'name', 'class', 'section', 'email');
+        if ($request->search) {
+            $query->where(function ($q) use ($request) {
+                $q->orWhere('name', 'like', '%' . $request->search . '%');
+                $q->orWhere('class', 'like', '%' . $request->search . '%');
+                $q->orWhere('email', 'like', '%' . $request->search . '%');
+                $q->orWhere('section', 'like', '%' . $request->search . '%');
+            });
+        }
+
+        $students = $query->get();
+
         return $students;
     }
 
@@ -67,7 +80,7 @@ class StudentController extends Controller
 
     public function update(Request $request, $id)
     {
-        // send data to database
+        // update data
         $student = Student::find($id);
 
         $student->name = $request->name;

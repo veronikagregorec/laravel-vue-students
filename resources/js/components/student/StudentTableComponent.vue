@@ -45,6 +45,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+
 export default {
     name: 'student-table-component',
 
@@ -131,7 +132,13 @@ export default {
     },
 
     mounted() {
-        this.$store.dispatch('getStudents')
+        this.$store.dispatch('getStudents', { search: this.search })
+    },
+
+    watch: {
+        search: function (val) {
+            this.$store.dispatch('getStudents', {search:this.search})
+        }
     }
 }
 </script>
