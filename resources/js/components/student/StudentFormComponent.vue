@@ -22,13 +22,13 @@
                 <el-input v-model="model.section" placeholder="Enter your section"  style="margin-top: -35px;"> </el-input>
               </el-column>
 
-              <el-row :guuter="10" class="btn">
+              <el-row :guuter="10" >
                 <el-form-item style="margin-top: 20px">
                     <el-button type="success" @click="saveForm('studentForm')">Save student</el-button>
                 </el-form-item>
               </el-row>
 
-              <div v-if="this.$store.state.message">{{ this.$store.state.message }}</div>
+              <div class="message" v-if="this.$store.state.message">{{ this.$store.state.message }}</div>
           </el-form>
       </div>
 
@@ -105,7 +105,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .wrap{
   display: flex;
   justify-content: center;
@@ -119,11 +119,13 @@ export default {
 }
 
 .box-card {
-  width: 700px;
+  width: 600px;
 }
 
-.btn{
-  display: flex;
-  justify-content: flex-end;
+.message{
+  text-align: center;
+  margin-top: 20px;
+  border: none;
+  color: #67c23a;
 }
 </style>

@@ -31,14 +31,14 @@
                         <el-button
                         size="small"
                         type="danger"
-                        @click="handleDelete(scope.$index, scope.row)"
+                        @click="deleteData(scope.$index, scope.row)"
                         >Delete</el-button
                         >
                     </template>
                     </el-table-column>
                 </el-table>
             </div>
-             <div v-if="this.$store.state.message">{{ this.$store.state.message }}</div>
+             <div class="message" v-if="this.$store.state.message">{{ this.$store.state.message }}</div>
         </el-card>
       </div>
 </template>
@@ -115,6 +115,18 @@ export default {
 
         editData(index,row) {
             window.location.href = '/edit-student/'+row.id+'/edit'
+        },
+
+        // automatically refresh the page
+        fetchAllData() {
+            this.$store.dispatch('getStudents')
+        },
+
+        deleteData(index, row) {
+            if (confirm("Are you sure you want to delete this data?")) {
+                this.$store.dispatch('deleteStudent', { id: row.id })
+                this.fetchAllData()
+            }
         }
     },
 
@@ -124,7 +136,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .wrap{
   display: flex;
   justify-content: center;
@@ -141,8 +153,15 @@ export default {
   width: 1200px;
 }
 
-/* .btn{
+.message{
+    text-align: center;
+    margin-top: 20px;
+    color: #f56c6c;
+}
+
+.btn{
   display: flex;
   justify-content: flex-end;
-} */
+  border: none;
+}
 </style>

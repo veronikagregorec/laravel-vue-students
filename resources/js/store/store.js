@@ -40,6 +40,14 @@ const store = createStore({
             })
             window.location.href='/students'
         },
+
+        deleteStudent({ commit }, payload) {
+            let url = `/delete-student/${payload.id}`; 
+            axios.delete(url).then(res => {
+                commit('message', "Data deleted successfully.")
+            })
+            // window.location.href='/students'
+        },
     },
 
     getters: {
