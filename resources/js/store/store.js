@@ -31,7 +31,15 @@ const store = createStore({
             axios.post(url, payload).then(res => {
                 commit('filterTableData', res.data)
             })
-        }
+        },
+
+        updateStudent({ commit }, payload) {
+            let url = `/update-student/${payload.id}`; 
+            axios.put(url, payload.model).then(res => {
+                commit('message', "Data updated successfully.")
+            })
+            window.location.href='/students'
+        },
     },
 
     getters: {

@@ -70,7 +70,19 @@ export default {
     saveForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$store.dispatch('saveStudent', this.model)
+          switch (this.scope) {
+            case 'create':
+              this.$store.dispatch('saveStudent', this.model);
+              break;
+
+            case 'edit':
+              this.$store.dispatch('updateStudent', {id:this.id, model:this.model});
+              break;
+
+            default:
+              break;
+          }
+          
         }
       })
     }

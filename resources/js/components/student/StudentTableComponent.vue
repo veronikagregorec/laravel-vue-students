@@ -38,7 +38,7 @@
                     </el-table-column>
                 </el-table>
             </div>
-
+             <div v-if="this.$store.state.message">{{ this.$store.state.message }}</div>
         </el-card>
       </div>
 </template>

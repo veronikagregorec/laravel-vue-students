@@ -64,4 +64,19 @@ class StudentController extends Controller
             'data' => $student
         ]);
     }
+
+    public function update(Request $request, $id)
+    {
+        // send data to database
+        $student = Student::find($id);
+
+        $student->name = $request->name;
+        $student->class = $request->class;
+        $student->section = $request->section;
+        $student->email = $request->email;
+
+        $student->update();
+
+        return response()->json();
+    }
 }
