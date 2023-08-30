@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     public function index()
     {
         return view('student.view');
@@ -39,5 +44,24 @@ class StudentController extends Controller
     {
         $students = Student::all();
         return $students;
+    }
+
+    public function edit($id)
+    {
+        $data = [
+            'scope' => 'edit',
+            'id' => $id
+        ];
+
+        return view('student.form')->with($data);
+    }
+
+    public function editData($id)
+    {
+        $student = Student::find($id);
+        return response()->json([
+            'status' => 200,
+            'data' => $student
+        ]);
     }
 }

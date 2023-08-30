@@ -25,7 +25,7 @@
                         <el-input v-model="search" size="small" placeholder="Search" />
                     </template>
                     <template #default="scope">
-                        <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
+                        <el-button size="small" @click="editData(scope.$index, scope.row)"
                         >Edit</el-button
                         >
                         <el-button
@@ -111,6 +111,10 @@ export default {
     methods: {
         create() {
             window.location.href = '/add-student'
+        },
+
+        editData(index,row) {
+            window.location.href = '/edit-student/'+row.id+'/edit'
         }
     },
 

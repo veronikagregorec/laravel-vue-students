@@ -37,11 +37,14 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'student-form-component',
 
   props: {
-    scope:String
+    scope: String,
+    id:Number
   },
 
   data() {
@@ -70,6 +73,21 @@ export default {
           this.$store.dispatch('saveStudent', this.model)
         }
       })
+    }
+  },
+
+  mounted() {
+    switch (this.scope) {
+      case 'edit':
+        axios.get(`/fetch-student-showbyid/${this.id}`).then(res => {
+          // console.log(res.data.data)
+          this['model'] = res.data.data
+        });
+
+        break;
+
+      default:
+        break;
     }
   }
 }
