@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    public function index()
+    {
+        return view('student.view');
+    }
+
     public function create()
     {
         $data = [
@@ -17,6 +22,7 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
+        // send data to database
         $student = new Student;
 
         $student->name = $request->name;
@@ -27,5 +33,11 @@ class StudentController extends Controller
         $student->save();
 
         return response()->json();
+    }
+
+    public function fetchStudentData()
+    {
+        $students = Student::all();
+        return $students;
     }
 }
