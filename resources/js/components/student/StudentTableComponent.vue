@@ -111,7 +111,8 @@ export default {
 
     methods: {
         create() {
-            window.location.href = '/add-student'
+            // window.location.href = '/add-student'
+            window.location.href = '/home'
         },
 
         editData(index,row) {

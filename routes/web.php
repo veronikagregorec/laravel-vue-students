@@ -15,8 +15,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/add-student', [StudentController::class, 'create']);
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [StudentController::class, 'create'])->name('home');
 Route::post('/save-student', [StudentController::class, 'store']);
 Route::get('/students', [StudentController::class, 'index']);
 Route::post('/get-studentsdata', [StudentController::class, 'fetchStudentData']);
