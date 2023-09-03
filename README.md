@@ -20,7 +20,6 @@ All of the latest versions of <b>Chrome</b>, <b>Firefox</b>, <b>Edge</b> and <b>
   <li>access http://localhost/phpmyadmin</li>  
   <li>create new database and call it laravel</li>
   <li>in folder .env.example rename to .env</li>
-  <li>in same file under MySQL connection change database name to laravel</li>
   <li>php artisan migrate:refresh</li>
 </ol>
 
@@ -38,7 +37,7 @@ Fill the data. When you click Save button the data are sent in the database and 
 
 ![](screenshots/create.png)
 
-List of students' data where you can delete and edit them and the table can be sorted by descending or ascending the id. In case of need to search the data enter a letter, a word or a number. The item or items will be shown.
+List of students' data where you can delete and edit them and the table can be sorted by descending or ascending id. In case of need to search the data enter a letter, a word or a number. The item or items will be shown.
 
 ![](screenshots/list.png)
 
